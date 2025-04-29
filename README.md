@@ -1,59 +1,144 @@
-# ClientSide
+# Product Catalog Dashboard (Client Side)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.7.
+## Introduction
 
-## Development server
+This project is part of a coding challenge that tasked me with building a **Product Catalog Dashboard** using **Angular 17+**. Users can view, search, filter, create, edit, and delete products. It also includes a comparative bar chart feature for visualizing product sales.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## Table of Contents
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- [Project Overview](#project-overview)
+- [Setup Instructions](#setup-instructions)
+- [High-Level Design Decisions](#high-level-design-decisions)
+- [Potential Improvements](#potential-improvements)
+- [How It Was Built](#how-it-was-built)
+- [Technology Stack](#technology-stack)
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Project Overview
 
-```bash
-ng generate component component-name
-```
+### Functional Requirements Implemented
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **View Products** in a dynamic, responsive table.
+- **Search Products by Name** dynamically.
+- **Filter Products** by Unit Cost and Total Sales with clear UI feedback.
+- **Create New Products** with full validation.
+- **Edit Existing Products** with real-time updates.
+- **Delete Products** with confirmation modal.
+- **Comparative Bar Chart** to visualize a product's sales compared to others.
+- **Error Handling** and **Loading Indicators** implemented throughout.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## Setup Instructions
 
-To build the project run:
+### Pre-Requisites
 
-```bash
-ng build
-```
+- Install Node.js v18+.
+- Ensure the **backend server** (Node.js API) is installed and running locally (`http://localhost:8080`).
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Running the Client
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+1. Clone the repository:
 
 ```bash
-ng e2e
+git clone https://github.com/devevangel/code-challenge-client.git
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+2. Install dependencies:
 
-## Additional Resources
+```bash
+npm install
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+3. Start the Angular development server:
+
+```bash
+npm run start
+```
+
+4. Open your browser at:
+
+```bash
+http://localhost:4200
+```
+
+## High-Level Design Decisions
+
+### Component-Based Architecture
+
+The app is broken down into small, reusable components:
+
+- `ProductsTableComponent`
+- `ProductRowComponent`
+- `EditProductFormComponent`
+- `CreateProductFormComponent`
+- `DeletePopupModalComponent`
+- `GraphModalComponent`
+- `SearchFilterComponent`
+
+### Service-Driven Data Access
+
+A dedicated `ProductService` handles all API requests, keeping components clean and focused purely on the UI.
+
+### Error and Loading Management
+
+Users receive immediate feedback through spinners and error messages during loading or when operations fail.
+
+### Minimalistic UI/UX
+
+TailwindCSS was used to build a clean, responsive design while keeping the user interface minimal and uncluttered.
+
+### Testing
+
+Basic unit tests were written for the `SearchFilterComponent` to demonstrate Angular testing skills and the ability to structure tests properly.
+
+---
+
+## Potential Improvements
+
+If given more time, I would:
+
+- Implement **Pagination** and **Column Sorting** for better scalability.
+- Write **comprehensive unit and integration tests** for all major components.
+- Introduce **Global State Management** using **NgRx** for better state handling.
+- Improve **Error Boundary Handling** across all parts of the app.
+- Enhance **UI responsiveness and accessibility** (a11y improvements) for wider browser and device support.
+
+---
+
+## How It Was Built
+
+### Breaking Down the Project
+
+Every feature was broken down into focused, standalone components to improve reusability, scalability, and flexibility.
+
+### Best Practices Followed
+
+- Followed Angular 17+ best practices
+- Utilized standalone components
+- Proper dependency injection
+- Modular service-based architecture
+- Reactive forms for better validation and control
+
+### Clean and Maintainable Code
+
+Code was written to be organized, modular, and easy to extend. Clear separation of concerns between UI components, services, and models.
+
+### Use of AI Assistance
+
+AI tools were used strategically to:
+
+- Debug complex Angular and TypeScript errors faster
+- Draft documentation and improve README structure
+- Speed up repetitive coding and formatting tasks
+
+---
+
+## Technology Stack
+
+- **Frontend:** Angular 17, TailwindCSS, ng2-charts (Chart.js wrapper)
+- **Backend:** Node.js, Express.js, LowDB (Mock Database)
+- **Testing:** Jasmine, Karma
