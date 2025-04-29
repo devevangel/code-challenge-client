@@ -1,0 +1,63 @@
+<app-search-filter
+  (search)="onSearchProducts($event)"
+  (filter)="onFilterProducts($event)"
+  (reset)="onResetProducts()"
+></app-search-filter>
+
+<section class="p-4 flex justify-center">
+  <div class="w-full max-w-5xl overflow-x-auto">
+    <table class="table-auto w-full border border-gray-300 rounded">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="px-4 py-2 text-left font-semibold text-gray-700">ID</th>
+          <th class="px-4 py-2 text-left font-semibold text-gray-700">Name</th>
+          <th class="px-4 py-2 text-left font-semibold text-gray-700">Unit</th>
+          <th class="px-4 py-2 text-left font-semibold text-gray-700">
+            Total Sales
+          </th>
+          <th class="px-4 py-2 text-left font-semibold text-gray-700">
+            Inventory
+          </th>
+          <th class="px-4 py-2 text-left font-semibold text-gray-700">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let product of products; let i = index"
+          app-product-row
+          [product]="product"
+          [index]="i"
+          (editProduct)="onEditProduct($event)"
+          (deleteProduct)="onDeleteProduct($event)"
+          (graphProduct)="onGraphProduct($event)"
+          class="border-t hover:bg-gray-300"
+        ></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<app-edit-product-form
+  *ngIf="editingProduct"
+  [showEditModal]="showEditModal"
+  [product]="editingProduct"
+  (closeModal)="closeEditModal()"
+  (productUpdated)="fetchProducts()"
+></app-edit-product-form>
+
+<app-delete-popup-modal
+  *ngIf="editingProduct && showDeleteModal"
+  [showDeleteModal]="showDeleteModal"
+  [product]="editingProduct"
+  (deletedProduct)="fetchProducts()"
+  (cancelModal)="closeDeleteModal()"
+></app-delete-popup-modal>
+
+<app-graph-modal
+  *ngIf="editingProduct && showGraphModal"
+  [showGraphModal]="showGraphModal"
+  [product]="editingProduct"
+  (cancelModal)="closeGraphModal()"
+></app-graph-modal>

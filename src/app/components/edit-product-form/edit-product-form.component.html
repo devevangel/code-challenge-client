@@ -1,0 +1,164 @@
+<!-- Only show modal if showModal is true -->
+<div
+  *ngIf="showEditModal"
+  class="w-screen h-screen fixed inset-0 flex items-center justify-center bg-black opacity-25 z-0"
+></div>
+
+<div
+  *ngIf="showEditModal"
+  class="fixed inset-0 flex items-center justify-center"
+>
+  <form
+    [formGroup]="productForm"
+    (ngSubmit)="onSubmit()"
+    class="w-full max-w-xl border p-6 bg-white rounded shadow-md relative z-50"
+  >
+    <h3 class="text-2xl font-semibold text-center mb-4">Edit Product</h3>
+
+    <!-- Error message -->
+    <p *ngIf="errorMessage" class="text-red-600 text-center font-semibold py-2">
+      {{ errorMessage }}
+    </p>
+
+    <!-- Fields -->
+    <div class="space-y-3">
+      <!-- Name -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Product Name</label>
+        <input
+          formControlName="name"
+          type="text"
+          class="w-full border p-2 rounded"
+          placeholder="Enter name"
+        />
+        <p
+          *ngIf="
+            productForm.get('name')?.touched && productForm.get('name')?.invalid
+          "
+          class="text-red-500 text-sm"
+        >
+          Product name is required.
+        </p>
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Description</label>
+        <textarea
+          formControlName="description"
+          rows="3"
+          class="w-full border p-2 rounded"
+          placeholder="Enter description"
+        ></textarea>
+        <p
+          *ngIf="
+            productForm.get('description')?.touched &&
+            productForm.get('description')?.invalid
+          "
+          class="text-red-500 text-sm"
+        >
+          Product description is required.
+        </p>
+      </div>
+
+      <!-- Unit Cost -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Unit Cost</label>
+        <input
+          formControlName="unitCost"
+          type="text"
+          class="w-full border p-2 rounded"
+          placeholder="Enter unit cost"
+        />
+        <p
+          *ngIf="
+            productForm.get('unitCost')?.touched &&
+            productForm.get('unitCost')?.invalid
+          "
+          class="text-red-500 text-sm"
+        >
+          Unit cost must be a positive number.
+        </p>
+      </div>
+
+      <!-- Total Sales -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Total Sales</label>
+        <input
+          formControlName="totalSales"
+          type="text"
+          class="w-full border p-2 rounded"
+          placeholder="Enter total sales"
+        />
+        <p
+          *ngIf="
+            productForm.get('totalSales')?.touched &&
+            productForm.get('totalSales')?.invalid
+          "
+          class="text-red-500 text-sm"
+        >
+          Total sales must be a positive number.
+        </p>
+      </div>
+
+      <!-- Inventory -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Inventory</label>
+        <input
+          formControlName="inventory"
+          type="text"
+          class="w-full border p-2 rounded"
+          placeholder="Enter inventory"
+        />
+        <p
+          *ngIf="
+            productForm.get('inventory')?.touched &&
+            productForm.get('inventory')?.invalid
+          "
+          class="text-red-500 text-sm"
+        >
+          Inventory must be a positive number.
+        </p>
+      </div>
+
+      <!-- Image URL -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Image URL</label>
+        <input
+          formControlName="imageUrl"
+          type="text"
+          class="w-full border p-2 rounded"
+          placeholder="Enter image URL"
+        />
+        <p
+          *ngIf="
+            productForm.get('imageUrl')?.touched &&
+            productForm.get('imageUrl')?.invalid
+          "
+          class="text-red-500 text-sm"
+        >
+          Image URL is required.
+        </p>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex justify-around pt-4">
+      <button
+        type="button"
+        (click)="onCancel()"
+        class="border px-4 py-2 rounded hover:bg-gray-100"
+      >
+        Cancel
+      </button>
+      <button
+        [disabled]="loading"
+        type="submit"
+        class="border px-4 py-2 rounded hover:bg-gray-100"
+      >
+        <ng-container *ngIf="loading; else saveText">Saving...</ng-container>
+        <ng-template #saveText>Save</ng-template>
+      </button>
+    </div>
+  </form>
+</div>

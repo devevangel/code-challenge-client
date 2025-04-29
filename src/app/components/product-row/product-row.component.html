@@ -1,0 +1,16 @@
+<td class="px-4 py-2">{{ index + 1 }}</td>
+<td class="px-4 py-2">{{ product.name }}</td>
+<td class="px-4 py-2">${{ product.unitCost }}</td>
+<td class="px-4 py-2">${{ product.totalSales }}</td>
+<td class="px-4 py-2">{{ product.inventory }}</td>
+<td class="px-4 py-2 space-x-2">
+  <button (click)="onViewGraph()" class="text-blue-500 hover:underline">
+    View
+  </button>
+  <button (click)="onEditProduct()" class="text-green-500 hover:underline">
+    Edit
+  </button>
+  <button class="text-red-500 hover:underline" (click)="onDeleteProduct()">
+    Delete
+  </button>
+</td>

@@ -1,0 +1,163 @@
+<section class="w-full flex justify-center p-2">
+  <form
+    [formGroup]="productForm"
+    (ngSubmit)="onSubmit()"
+    class="w-full max-w-xl border p-4 rounded"
+  >
+    <h3 class="text-2xl font-semibold text-center">Create Product</h3>
+    <!-- Error message -->
+    <p *ngIf="errorMessage" class="text-red-600 text-center font-semibold py-2">
+      {{ errorMessage }}
+    </p>
+
+    <!-- Product Name -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1"
+        >Product Name</label
+      >
+      <input
+        formControlName="name"
+        type="text"
+        placeholder="Enter product name"
+        class="w-full border p-2 rounded"
+      />
+      <p
+        *ngIf="
+          productForm.get('name')?.touched && productForm.get('name')?.invalid
+        "
+        class="text-red-600"
+      >
+        Product name is required.
+      </p>
+    </div>
+
+    <!-- Description -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1"
+        >Description</label
+      >
+      <textarea
+        formControlName="description"
+        placeholder="Enter product description"
+        rows="3"
+        class="w-full border p-2 rounded"
+      ></textarea>
+      <p
+        *ngIf="
+          productForm.get('description')?.touched &&
+          productForm.get('description')?.invalid
+        "
+        class="text-red-600"
+      >
+        Product description is required.
+      </p>
+    </div>
+
+    <!-- Unit Cost -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1"
+        >Unit Cost</label
+      >
+      <input
+        formControlName="unitCost"
+        type="number"
+        placeholder="Enter unit cost"
+        class="w-full border p-2 rounded"
+      />
+      <p
+        *ngIf="
+          productForm.get('unitCost')?.touched &&
+          productForm.get('unitCost')?.invalid
+        "
+        class="text-red-600"
+      >
+        Product unit cost is required.
+      </p>
+    </div>
+
+    <!-- Total Sales -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1"
+        >Total Sales</label
+      >
+      <input
+        formControlName="totalSales"
+        type="number"
+        placeholder="Enter total sales"
+        class="w-full border p-2 rounded"
+      />
+      <p
+        *ngIf="
+          productForm.get('totalSales')?.touched &&
+          productForm.get('totalSales')?.invalid
+        "
+        class="text-red-600"
+      >
+        Product total sales is required.
+      </p>
+    </div>
+
+    <!-- Inventory -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1"
+        >Inventory</label
+      >
+      <input
+        formControlName="inventory"
+        type="number"
+        placeholder="Enter inventory"
+        class="w-full border p-2 rounded"
+      />
+      <p
+        *ngIf="
+          productForm.get('inventory')?.touched &&
+          productForm.get('inventory')?.invalid
+        "
+        class="text-red-600"
+      >
+        Product inventory is required.
+      </p>
+    </div>
+
+    <!-- Image URL -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1"
+        >Image URL</label
+      >
+      <input
+        formControlName="imageUrl"
+        type="text"
+        placeholder="Enter image url"
+        class="w-full border p-2 rounded"
+      />
+      <p
+        *ngIf="
+          productForm.get('imageUrl')?.touched &&
+          productForm.get('imageUrl')?.invalid
+        "
+        class="text-red-600"
+      >
+        Product image url is required.
+      </p>
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex justify-around pt-2">
+      <button
+        type="button"
+        class="border px-4 py-2 rounded hover:bg-gray-100"
+        (click)="onReset()"
+      >
+        Reset
+      </button>
+      <button
+        type="submit"
+        [disabled]="loading"
+        class="border px-4 py-2 rounded hover:bg-gray-100"
+      >
+        <ng-container *ngIf="loading; else saveText">Saving...</ng-container>
+        <ng-template #saveText>Save</ng-template>
+      </button>
+    </div>
+  </form>
+</section>

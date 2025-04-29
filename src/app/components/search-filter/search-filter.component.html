@@ -1,0 +1,57 @@
+<section class="p-4 flex justify-center">
+  <div class="w-full max-w-5xl flex flex-col md:flex-row gap-4">
+    <!-- Search Input -->
+    <div class="flex-1 flex items-center gap-2">
+      <input
+        [(ngModel)]="searchTerm"
+        class="border border-gray-300 rounded p-2 flex-grow"
+        type="text"
+        placeholder="Search product by name..."
+      />
+      <button
+        class="border rounded py-2 px-4 hover:bg-gray-200"
+        (click)="onSearch()"
+      >
+        Search
+      </button>
+    </div>
+
+    <!-- Filter Options -->
+    <div class="flex-1 flex items-center gap-2">
+      <select class="border rounded p-2 flex-1" [(ngModel)]="filterField">
+        <option value="">Select filter field</option>
+        <option value="cost">Cost</option>
+        <option value="sales">Total Sales</option>
+      </select>
+
+      <select class="border rounded p-2 flex-1" [(ngModel)]="filterOperator">
+        <option value="">Select operator</option>
+        <option value="gt">Greater than</option>
+        <option value="lt">Less than</option>
+        <option value="gte">Greater than or equal to</option>
+        <option value="lte">Less than or equal to</option>
+      </select>
+
+      <input
+        class="border rounded p-2 w-24"
+        type="number"
+        placeholder="Value"
+        [(ngModel)]="filterValue"
+      />
+
+      <button
+        class="border rounded py-2 px-4 hover:bg-gray-200"
+        (click)="onFilter()"
+      >
+        Filter
+      </button>
+    </div>
+
+    <button
+      class="border rounded py-2 px-4 hover:bg-gray-200"
+      (click)="onReset()"
+    >
+      Reset
+    </button>
+  </div>
+</section>

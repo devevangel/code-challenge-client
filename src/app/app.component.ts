@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { NavigationComponent } from './components/navigation/navigation.component';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [NavigationComponent, RouterOutlet],
 })
 export class AppComponent {
   title = 'client-side';

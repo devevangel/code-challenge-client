@@ -1,0 +1,33 @@
+<div
+  *ngIf="showGraphModal"
+  class="w-screen h-screen fixed inset-0 flex items-center justify-center bg-black opacity-25 z-0"
+></div>
+
+<div
+  *ngIf="showGraphModal"
+  class="fixed inset-0 flex items-center justify-center z-50 px-2"
+>
+  <div class="bg-white p-6 rounded shadow-md w-full max-w-3xl">
+    <h2 class="text-2xl font-semibold text-center mb-6">
+      Net Sales Volume Comparison
+    </h2>
+
+    <div class="flex justify-center w-full">
+      <canvas
+        baseChart
+        [data]="barChartData"
+        [options]="barChartOptions"
+        class="w-full max-w-2xl h-80"
+      ></canvas>
+    </div>
+
+    <div class="flex justify-center mt-6">
+      <button
+        (click)="onCancel()"
+        class="border px-6 py-2 rounded hover:bg-gray-100"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
