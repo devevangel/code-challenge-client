@@ -19,8 +19,8 @@ export class SearchFilterComponent {
   @Output() reset = new EventEmitter<void>();
 
   searchTerm: string = '';
-  filterField: 'cost' | 'sales' = 'cost';
-  filterOperator: 'gt' | 'lt' | 'gte' | 'lte' = 'gt';
+  filterField: 'cost' | 'sales' | '' = '';
+  filterOperator: 'gt' | 'lt' | 'gte' | 'lte' | '' = '';
   filterValue: string = '';
 
   onSearch() {
