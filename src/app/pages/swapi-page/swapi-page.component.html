@@ -1,0 +1,18 @@
+<section class="pw-full flex justify-center p-2">
+  @if (persons && persons.length > 0 ) {
+  <ul>
+    @for (person of persons; track person.name) {
+    <li class="mx-4 my-2 border p-2">
+      {{ person.name }}
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-4"
+        (click)="onImportPerson(person)"
+      >
+        import
+      </button>
+    </li>
+
+    }
+  </ul>
+  }
+</section>
